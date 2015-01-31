@@ -13,7 +13,7 @@ def choke():
     song = AudioSegment.from_mp3("audio/choke.mp3")
     play(song)
 
-def existance():
+def existence():
     song = AudioSegment.from_mp3("audio/existance.mp3")
     play(song)
 
