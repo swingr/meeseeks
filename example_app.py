@@ -63,6 +63,11 @@ def follow():
     meeseek.follow()
     return "Follow Through!"
 
+@app.route("/nice/")
+def nice():
+    meeseek.nice()
+    return "NIIICCCCCEEEE!!!"
+
 @app.route("/result/<number>/")
 def result(number):
     if twilio_client is not None:
