@@ -30,3 +30,6 @@ def frustrating():
 def head():
     song = AudioSegment.from_wav(_format("head.wav"))
     play(song)
+
+def follow():
+    pass # Need to create soundbyte.
