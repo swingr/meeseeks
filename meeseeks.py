@@ -37,6 +37,10 @@ class Meeseeks():
         self.send("Keep your head down!")
         audio.head()
 
+    def follow(self):
+        self.send("You gotta follow through!")
+        audio.follow()
+
 if __name__ == "__main__":
     meeseeks = Meeseeks()
     meeseeks.connect()

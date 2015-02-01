@@ -34,3 +34,7 @@ def head():
 def nice():
     song = AudioSegment.from_wav(_format("nice.wav"))
     play(song)
+
+def follow():
+    song = AudioSegment.from_wav(_format("follow.wav"))
+    play(song)
