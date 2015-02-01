@@ -22,7 +22,7 @@ class Meeseeks():
         audio.shoulders()
 
     def choke(self):
-        self.send("Don't choke!")
+        self.send("Choke up on the club!")
         audio.choke()
 
     def existence(self):
