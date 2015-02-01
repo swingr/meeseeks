@@ -68,6 +68,11 @@ def nice():
     meeseek.nice()
     return "NIIICCCCCEEEE!!!"
 
+@app.route("/short/")
+def short():
+    meeseek.short()
+    return "How's your short game?"
+
 @app.route("/result/<number>/")
 def result(number):
     if twilio_client is not None:

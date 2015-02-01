@@ -46,6 +46,10 @@ class Meeseeks():
         self.send("NIIIICCCCCEEEE!")
         audio.nice()
 
+    def short(self):
+        self.send("What about your short game")
+        audio.short()
+
 if __name__ == "__main__":
     meeseeks = Meeseeks()
     meeseeks.connect()
