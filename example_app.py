@@ -11,6 +11,8 @@ meeseek = meeseeks.Meeseeks()
 meeseek.connect()
 twilio_client, twilio_number = None, ""
 
+SCORES = []
+
 
 # Endpoints
 
@@ -25,6 +27,7 @@ def start():
 
 @app.route("/score/<value>/")
 def score(value):
+    SCORES.append(str(value))
     meeseek.send("Score: {0}%".format(str(value)))
     return "SCORE!"
 
@@ -68,16 +71,23 @@ def nice():
     meeseek.nice()
     return "NIIICCCCCEEEE!!!"
 
-@app.route("/result/<number>/")
+@app.route("/result/<number>/", methods = ['POST'])
 def result(number):
     if twilio_client is not None:
-        body = "HELLO"
+        body = make_sms()
         message = twilio_client.messages.create(
             to=number,
             from_=twilio_number,
             body=body,
         )
     return "Results sent to {0}".format(str(body))
+
+def make_sms():
+    msg = "Attempts:\n"
+    for i, score in enumerate(SCORES):
+        msg = "{0}{1}: {2}%\n".foramt(msg, i, score)
+    SCORES = []
+    return msg
 
 if __name__ == '__main__':
     _account = click.prompt("Please enter your Twilio account")
