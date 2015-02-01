@@ -11,9 +11,6 @@ meeseek = meeseeks.Meeseeks()
 meeseek.connect()
 twilio_client, twilio_number = None, ""
 
-SCORES = []
-
-
 # Endpoints
 
 @app.route("/")
@@ -27,13 +24,13 @@ def start():
 
 @app.route("/score/<value>/")
 def score(value):
-    SCORES.append(str(value))
+    meeseek.score.append(str(value))
     meeseek.send("Score: {0}%".format(str(value)))
     return "SCORE!"
 
 @app.route("/send/<msg>/")
 def send(msg):
-    meeseek.send("Score: {0}".format(str(msg)))
+    meeseek.send(str(msg))
     return "SENT!"
 
 @app.route("/shoulders/")
@@ -82,11 +79,12 @@ def result(number):
         )
     return "Results sent to {0}".format(str(body))
 
-def make_sms(scores=SCORES):
+def make_sms():
     msg = "Attempts:\n"
-    for i, score in enumerate(scores, start=1):
+    s = meeseek.score[:]
+    meeseek.score = []
+    for i, score in enumerate(s, start=1):
         msg = "{0}{1}: {2}%\n".format(msg, i, score)
-    SCORES = []
     return msg
 
 if __name__ == '__main__':

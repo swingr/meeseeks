@@ -6,6 +6,7 @@ class Meeseeks():
         self.id = id
         self.name = name
         self.pebble = None
+        self.score = []
 
     def connect(self):
         self.pebble = p.Pebble(self.id)
