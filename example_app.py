@@ -71,7 +71,7 @@ def nice():
     meeseek.nice()
     return "NIIICCCCCEEEE!!!"
 
-@app.route("/result/<number>/", methods = ['POST'])
+@app.route("/result/<number>/")
 def result(number):
     if twilio_client is not None:
         body = make_sms()
@@ -82,10 +82,10 @@ def result(number):
         )
     return "Results sent to {0}".format(str(body))
 
-def make_sms():
+def make_sms(scores=SCORES):
     msg = "Attempts:\n"
-    for i, score in enumerate(SCORES):
-        msg = "{0}{1}: {2}%\n".foramt(msg, i, score)
+    for i, score in enumerate(scores, start=1):
+        msg = "{0}{1}: {2}%\n".format(msg, i, score)
     SCORES = []
     return msg
 
