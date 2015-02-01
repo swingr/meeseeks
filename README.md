@@ -1,2 +1,3 @@
-# PuttPutt
-Frontend and visualizations of the users swing.
+# meeseeks
+
+![alt text](./meeseeks.png "I'm Mr. Meeseeks look at me!")
