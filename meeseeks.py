@@ -1,26 +1,43 @@
-from pydub import AudioSegment
-from pydub.playback import play
+import pebble as p
+import audio
 
-def start():
-    song = AudioSegment.from_mp3("audio/beginning.mp3")
-    play(song)
+class Meeseeks():
+    def __init__(self, id="464F", name="Mr. Meeseeks"):
+        self.id = id
+        self.name = name
+        self.pebble = None
 
-def shoulders():
-    song = AudioSegment.from_mp3("audio/shoulders.mp3")
-    play(song)
+    def connect(self):
+        self.pebble = p.Pebble(self.id)
 
-def choke():
-    song = AudioSegment.from_mp3("audio/choke.mp3")
-    play(song)
+    def send(self, msg):
+        self.pebble.notification_sms(self.name, msg)
 
-def existence():
-    song = AudioSegment.from_mp3("audio/existance.mp3")
-    play(song)
+    def start(self):
+        self.send("Are you ready to take two strokes off your game! Ohhhhh yeah!")
+        audio.start()
 
-def frustrating():
-    song = AudioSegment.from_mp3("audio/frustrating.mp3")
-    play(song)
+    def shoulders(self):
+        self.send("Remember to square your shoulders!")
+        audio.shoulders()
 
-def head():
-    song = AudioSegment.from_mp3("audio/head.mp3")
-    play(song)
+    def choke(self):
+        self.send("Don't choke!")
+        audio.choke()
+
+    def existence(self):
+        self.send("Existence is pain!")
+        audio.existence()
+
+    def frustrating(self):
+        self.send("Arrgghhhhhhh!")
+        audio.frustrating()
+
+    def head(self):
+        self.send("Keep your head down!")
+        audio.head()
+
+if __name__ == "__main__":
+    meeseeks = Meeseeks()
+    meeseeks.connect()
+    meeseeks.choke()
