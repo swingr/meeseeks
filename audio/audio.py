@@ -30,3 +30,7 @@ def frustrating():
 def head():
     song = AudioSegment.from_wav(_format("head.wav"))
     play(song)
+
+def nice():
+    song = AudioSegment.from_wav(_format("nice.wav"))
+    play(song)
